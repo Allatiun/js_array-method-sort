@@ -1,32 +1,5 @@
 'use strict';
 
-/**
- * Implement method Sort
- */ /*
-function applyCustomSort() {
-  [].__proto__.sort2 = function (compareFunction) {
-    if (typeof compareFunction !== 'function') {
-      // eslint-disable-next-line no-param-reassign
-      compareFunction = (a, b) => (String(a) > String(b) ? 1 : -1);
-    }
-
-    let swapped;
-
-    do {
-      swapped = false;
-
-      for (let i = 0; i < this.length - 1; i++) {
-        if (compareFunction(this[i], this[i + 1]) > 0) {
-          [this[i], this[i + 1]] = [this[i + 1], this[i]];
-          swapped = true;
-        }
-      }
-    } while (swapped);
-
-    return this;
-  };
-} */
-
 function applyCustomSort() {
   [].__proto__.sort2 = function (compareFunction) {
     if (typeof compareFunction !== 'function') {
@@ -36,9 +9,9 @@ function applyCustomSort() {
 
     for (let i = 0; i < this.length - 1; i++) {
       // eslint-disable-next-line no-shadow
-      for (let i = 0; i < this.length - 1; i++) {
-        if (compareFunction(this[i], this[i + 1]) > 0) {
-          [this[i], this[i + 1]] = [this[i + 1], this[i]];
+      for (let j = 0; j < this.length - 1 - i; j++) {
+        if (compareFunction(this[j], this[j + 1]) > 0) {
+          [this[j], this[j + 1]] = [this[j + 1], this[j]];
         }
       }
     }
